@@ -83,14 +83,16 @@ function Posts() {
           An error ocurred ${postError}
         </h1>
       }
-      <PostList removePost={removePost} posts={searchedAndSortedPosts} title='Lorem posts'/>
-      <div ref={lastElement}></div>
-      {isPostsLoading &&
+      {isPostsLoading
+        ?
         <div style={{marginTop: 50, display: 'flex', justifyContent: 'center'}}>
           <Loader/>
         </div>
-      }
-      <Pagintation totalPages={totalPages} page={page} changePage={changePage}/>
+        :
+        <div>
+          <PostList removePost={removePost} posts={searchedAndSortedPosts} title='Lorem posts'/>
+          <div ref={lastElement}></div>
+        </div>
       }
     </div>
   )
